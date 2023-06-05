@@ -1,0 +1,123 @@
+{
+  "name": "@metacrm/metacrm-material-ui",
+  "description": "Storybook for MetaCRM Material UI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MetaCRM-Inc/metacrm-svg.git"
+  },
+  "version": "0.1.0",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.21.8",
+    "@babel/preset-react": "^7.18.6",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.3",
+    "@mui/styled-engine-sc": "^5.12.0",
+    "@mui/styles": "^5.12.3",
+    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "install": "^0.13.0",
+    "lodash-es": "^4.17.21",
+    "path": "^0.12.7",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.1",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-dom": "^17.0.1",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "styled-components": "^6.0.0-rc.3",
+    "svgo": "^3.0.2",
+    "svgtofont": "^3.23.1",
+    "web-vitals": "^2.1.4"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build-storybook": "storybook build",
+    "build": "yarn clean && yarn svg-icons:generate && yarn svg-font:generate && NODE_ENV=production rollup -c --bundleConfigAsCjs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "storybook dev -p 6006",
+    "svg-icons:generate": "node ./scripts/svg-icons/generate.js",
+    "svg-font:generate": "yarn clean-fonts && node ./scripts/webFonts.js",
+    "clean": "rimraf ./dist",
+    "clean-fonts": "rimraf ./assets/fonts"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser",
+      "babelOptions": {
+        "presets": [
+          [
+            "@babel/preset-react"
+          ],
+          [
+            "babel-preset-react-app",
+            false
+          ]
+        ]
+      }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@storybook/addon-essentials": "^7.0.9",
+    "@storybook/addon-interactions": "^7.0.9",
+    "@storybook/addon-links": "^7.0.9",
+    "@storybook/blocks": "^7.0.9",
+    "@storybook/preset-create-react-app": "^7.0.9",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^7.0.9",
+    "@storybook/react-webpack5": "^7.0.9",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "5.2.7",
+    "postcss": "^8.4.23",
+    "rollup": "^3.22.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.62.1",
+    "sass-loader": "10.1.1",
+    "storybook": "^7.0.9",
+    "style-loader": "2.0.0",
+    "webpack": "^5.82.0"
+  }
+}

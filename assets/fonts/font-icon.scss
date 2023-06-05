@@ -1,0 +1,267 @@
+@font-face {font-family: "font-icon";
+  src: url("font-icon.woff2?t=1685933793661") format("woff2"),
+  url("font-icon.woff?t=1685933793661") format("woff"),
+  url('font-icon.ttf?t=1685933793661') format('truetype') /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+[class^="font-icon-"], [class*=" font-icon-"] {
+  font-family: 'font-icon' !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+}
+
+.font-size-10 {
+  font-size: 10px;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.font-size-24 {
+  font-size: 24px;
+}
+
+.font-size-28 {
+  font-size: 28px;
+}
+
+.font-size-32 {
+  font-size: 32px;
+}
+
+.font-size-36 {
+  font-size: 36px;
+}
+
+.font-size-40 {
+  font-size: 40px;
+}
+
+.font-size-44 {
+  font-size: 44px;
+}
+
+.font-size-48 {
+  font-size: 48px;
+}
+
+.font-size-54 {
+  font-size: 54px;
+}
+
+.font-size-64 {
+  font-size: 64px;
+}
+
+.font-size-72 {
+  font-size: 72px;
+}
+
+.font-size-112 {
+  font-size: 112px;
+}
+
+.font-stack {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 2em;
+  width: 2em;
+}
+
+.font-stack i[class^="font-icon-avatar-enquiry_outer_1"],
+.font-stack i[class^="font-icon-avatar-contact_outer_1"] {
+  color: #19BF99;
+}
+
+.font-stack i[class^="font-icon-avatar-space_outer_1"]{
+  color: #707D80;
+}
+
+.font-stack i[class^="font-icon-avatar-maaiibot_outer_1"]{
+  color: #17246D;
+}
+
+.font-stack i[class^="font-icon-disable-video_inner_2"],
+.font-stack i[class^="font-icon-mute-audio_inner_2"]
+{
+  color: red;
+}
+
+.font-stack i[class^="font-icon-category-"]:first-child {
+  color: #f1f4f5;
+  border: 2px solid #fff;
+  border-radius: 5em;
+}
+
+.font-stack i[class^="font-icon-category-"]:last-child {
+  color: #707D80;
+  border: 2px solid #fff;
+  border-radius: 5em;
+}
+
+.font-stack i[class^="font-icon-devices-"]:first-child {
+  color: #424f52;
+}
+
+.font-stack i[class^="font-icon-devices-"]:last-child,
+.font-stack i[class^="font-icon-avatar-"]:last-child {
+  color: #ffffff;
+}
+
+.font-stack > i {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.stack-1x {
+  line-height: 2;
+}
+
+.stack-1_2x {
+  font-size: 1.2em;
+}
+
+.stack-1_5x {
+  font-size: 1.5em;
+}
+
+.stack-2x {
+  font-size: 2rem;
+}
+
+.font-stack.disable-video,
+.font-stack.mute-audio {
+  height: 1em;
+  width: 1em;
+
+}
+
+.font-stack.disable-video i,
+.font-stack.mute-audio i {
+  line-height: 1;
+}
+
+.font-stack.participant-notification i,
+.font-stack.message-unread i {
+  line-height: 1;
+}
+
+.font-stack .font-icon-participant-notification_outer_1,
+.font-stack .font-icon-message-unread_outer_1 {
+  color: #DC3545;
+}
+
+.font-icon-Box_open_light:before { content: "\ea01"; }
+.font-icon-Setting_line:before { content: "\ea02"; }
+.font-icon-ic_add:before { content: "\ea03"; }
+.font-icon-ic_arrowLineDown-1:before { content: "\ea04"; }
+.font-icon-ic_arrowLineDown:before { content: "\ea05"; }
+.font-icon-ic_arrowLineUp-1:before { content: "\ea06"; }
+.font-icon-ic_arrowLineUp:before { content: "\ea07"; }
+.font-icon-ic_arrowdown:before { content: "\ea08"; }
+.font-icon-ic_arrowdownDesk:before { content: "\ea09"; }
+.font-icon-ic_arrowdownM:before { content: "\ea0a"; }
+.font-icon-ic_arrowupDesk:before { content: "\ea0b"; }
+.font-icon-ic_calendar:before { content: "\ea0c"; }
+.font-icon-ic_cancel:before { content: "\ea0d"; }
+.font-icon-ic_check:before { content: "\ea0e"; }
+.font-icon-ic_columns:before { content: "\ea0f"; }
+.font-icon-ic_createNew:before { content: "\ea10"; }
+.font-icon-ic_customers:before { content: "\ea11"; }
+.font-icon-ic_discord:before { content: "\ea12"; }
+.font-icon-ic_dots:before { content: "\ea13"; }
+.font-icon-ic_edit-1:before { content: "\ea14"; }
+.font-icon-ic_edit:before { content: "\ea15"; }
+.font-icon-ic_ethereum:before { content: "\ea16"; }
+.font-icon-ic_ethereumGray:before { content: "\ea17"; }
+.font-icon-ic_folder:before { content: "\ea18"; }
+.font-icon-ic_folderPlus:before { content: "\ea19"; }
+.font-icon-ic_gift:before { content: "\ea1a"; }
+.font-icon-ic_image:before { content: "\ea1b"; }
+.font-icon-ic_invite:before { content: "\ea1c"; }
+.font-icon-ic_invited:before { content: "\ea1d"; }
+.font-icon-ic_lock:before { content: "\ea1e"; }
+.font-icon-ic_login-1:before { content: "\ea1f"; }
+.font-icon-ic_login:before { content: "\ea20"; }
+.font-icon-ic_notification:before { content: "\ea21"; }
+.font-icon-ic_premium:before { content: "\ea22"; }
+.font-icon-ic_preview-1:before { content: "\ea23"; }
+.font-icon-ic_preview:before { content: "\ea24"; }
+.font-icon-ic_redo:before { content: "\ea25"; }
+.font-icon-ic_refresh:before { content: "\ea26"; }
+.font-icon-ic_responses:before { content: "\ea27"; }
+.font-icon-ic_search:before { content: "\ea28"; }
+.font-icon-ic_share:before { content: "\ea29"; }
+.font-icon-ic_signIn:before { content: "\ea2a"; }
+.font-icon-ic_signOut:before { content: "\ea2b"; }
+.font-icon-ic_sort:before { content: "\ea2c"; }
+.font-icon-ic_template:before { content: "\ea2d"; }
+.font-icon-ic_ticket:before { content: "\ea2e"; }
+.font-icon-ic_tw:before { content: "\ea2f"; }
+.font-icon-ic_update:before { content: "\ea30"; }
+.font-icon-ic_uploadImage:before { content: "\ea31"; }
+
+$font-icon-Box_open_light: "\ea01";
+$font-icon-Setting_line: "\ea02";
+$font-icon-ic_add: "\ea03";
+$font-icon-ic_arrowLineDown-1: "\ea04";
+$font-icon-ic_arrowLineDown: "\ea05";
+$font-icon-ic_arrowLineUp-1: "\ea06";
+$font-icon-ic_arrowLineUp: "\ea07";
+$font-icon-ic_arrowdown: "\ea08";
+$font-icon-ic_arrowdownDesk: "\ea09";
+$font-icon-ic_arrowdownM: "\ea0a";
+$font-icon-ic_arrowupDesk: "\ea0b";
+$font-icon-ic_calendar: "\ea0c";
+$font-icon-ic_cancel: "\ea0d";
+$font-icon-ic_check: "\ea0e";
+$font-icon-ic_columns: "\ea0f";
+$font-icon-ic_createNew: "\ea10";
+$font-icon-ic_customers: "\ea11";
+$font-icon-ic_discord: "\ea12";
+$font-icon-ic_dots: "\ea13";
+$font-icon-ic_edit-1: "\ea14";
+$font-icon-ic_edit: "\ea15";
+$font-icon-ic_ethereum: "\ea16";
+$font-icon-ic_ethereumGray: "\ea17";
+$font-icon-ic_folder: "\ea18";
+$font-icon-ic_folderPlus: "\ea19";
+$font-icon-ic_gift: "\ea1a";
+$font-icon-ic_image: "\ea1b";
+$font-icon-ic_invite: "\ea1c";
+$font-icon-ic_invited: "\ea1d";
+$font-icon-ic_lock: "\ea1e";
+$font-icon-ic_login-1: "\ea1f";
+$font-icon-ic_login: "\ea20";
+$font-icon-ic_notification: "\ea21";
+$font-icon-ic_premium: "\ea22";
+$font-icon-ic_preview-1: "\ea23";
+$font-icon-ic_preview: "\ea24";
+$font-icon-ic_redo: "\ea25";
+$font-icon-ic_refresh: "\ea26";
+$font-icon-ic_responses: "\ea27";
+$font-icon-ic_search: "\ea28";
+$font-icon-ic_share: "\ea29";
+$font-icon-ic_signIn: "\ea2a";
+$font-icon-ic_signOut: "\ea2b";
+$font-icon-ic_sort: "\ea2c";
+$font-icon-ic_template: "\ea2d";
+$font-icon-ic_ticket: "\ea2e";
+$font-icon-ic_tw: "\ea2f";
+$font-icon-ic_update: "\ea30";
+$font-icon-ic_uploadImage: "\ea31";
+

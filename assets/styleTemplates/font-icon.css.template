@@ -1,0 +1,168 @@
+@font-face {font-family: "{{fontname}}";
+  src: url("{{cssPath}}{{fontname}}.woff2?t={{timestamp}}") format("woff2"),
+  url("{{cssPath}}{{fontname}}.woff?t={{timestamp}}") format("woff"),
+  url('{{cssPath}}{{fontname}}.ttf?t={{timestamp}}') format('truetype') /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+[class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
+  font-family: '{{fontname}}' !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+}
+
+.font-size-10 {
+  font-size: 10px;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.font-size-24 {
+  font-size: 24px;
+}
+
+.font-size-28 {
+  font-size: 28px;
+}
+
+.font-size-32 {
+  font-size: 32px;
+}
+
+.font-size-36 {
+  font-size: 36px;
+}
+
+.font-size-40 {
+  font-size: 40px;
+}
+
+.font-size-44 {
+  font-size: 44px;
+}
+
+.font-size-48 {
+  font-size: 48px;
+}
+
+.font-size-54 {
+  font-size: 54px;
+}
+
+.font-size-64 {
+  font-size: 64px;
+}
+
+.font-size-72 {
+  font-size: 72px;
+}
+
+.font-size-112 {
+  font-size: 112px;
+}
+
+.font-stack {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 2em;
+  width: 2em;
+}
+
+.font-stack i[class^="font-icon-avatar-enquiry_outer_1"],
+.font-stack i[class^="font-icon-avatar-contact_outer_1"] {
+  color: #19BF99;
+}
+
+.font-stack i[class^="font-icon-avatar-space_outer_1"]{
+  color: #707D80;
+}
+
+.font-stack i[class^="font-icon-avatar-maaiibot_outer_1"]{
+  color: #17246D;
+}
+
+.font-stack i[class^="font-icon-disable-video_inner_2"],
+.font-stack i[class^="font-icon-mute-audio_inner_2"]
+{
+  color: red;
+}
+
+.font-stack i[class^="font-icon-category-"]:first-child {
+  color: #f1f4f5;
+  border: 2px solid #fff;
+  border-radius: 5em;
+}
+
+.font-stack i[class^="font-icon-category-"]:last-child {
+  color: #707D80;
+  border: 2px solid #fff;
+  border-radius: 5em;
+}
+
+.font-stack i[class^="font-icon-devices-"]:first-child {
+  color: #424f52;
+}
+
+.font-stack i[class^="font-icon-devices-"]:last-child,
+.font-stack i[class^="font-icon-avatar-"]:last-child {
+  color: #ffffff;
+}
+
+.font-stack > i {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.stack-1x {
+  line-height: 2;
+}
+
+.stack-1_2x {
+  font-size: 1.2em;
+}
+
+.stack-1_5x {
+  font-size: 1.5em;
+}
+
+.stack-2x {
+  font-size: 2em;
+}
+
+.font-stack.disable-video,
+.font-stack.mute-audio {
+  height: 1em;
+  width: 1em;
+
+}
+
+.font-stack.disable-video i,
+.font-stack.mute-audio i {
+  line-height: 1;
+}
+
+.font-stack.participant-notification i,
+.font-stack.message-unread i {
+  line-height: 1;
+}
+
+.font-stack .font-icon-participant-notification_outer_1,
+.font-stack .font-icon-message-unread_outer_1 {
+  color: #DC3545;
+}
+
+{{cssString}}

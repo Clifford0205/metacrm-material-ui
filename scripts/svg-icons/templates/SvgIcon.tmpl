@@ -1,0 +1,8 @@
+export { default as SvgIcon } from './SvgIcon';
+
+export { default as CircleIconWrapper } from './CircleIcon';
+
+<% _.forOwn(ICONS, (component, file) => {
+%>export { default as <%- component %> } from './svg-icons/<%- file %>';
+<%
+})%>
