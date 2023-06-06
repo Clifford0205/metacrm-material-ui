@@ -15,7 +15,7 @@ const useColorMode = () => {
         }
       },
     }),
-    [setMode] // 將 setMode 加入依賴
+    []
   );
 
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
