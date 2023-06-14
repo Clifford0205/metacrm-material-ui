@@ -1,8 +1,10 @@
 /** @type { import('@storybook/react').Preview } */
 import 'react-toastify/dist/ReactToastify.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import useColorMode from '@/hooks/useColorMode.hooks';
 import { useEffect } from 'react';
+
+import ColorModeContext from '@/contexts/ColorMode.context';
+import useColorMode from '@/hooks/useColorMode.hooks';
 
 const preview = {
   parameters: {
@@ -33,7 +35,8 @@ const preview = {
   decorators: [
     (Story, context) => {
       const { colorModeHooksValue, theme } = useColorMode();
-      const { toggleColorMode } = colorModeHooksValue;
+      const { toggleColorMode, mode } = colorModeHooksValue;
+
       const { theme: themeKey } = context.globals;
 
       useEffect(() => {
@@ -41,10 +44,12 @@ const preview = {
       }, [themeKey, toggleColorMode]);
 
       return (
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Story />
-        </ThemeProvider>
+        <ColorModeContext.Provider value={colorModeHooksValue}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Story />
+          </ThemeProvider>
+        </ColorModeContext.Provider>
       );
     },
   ],

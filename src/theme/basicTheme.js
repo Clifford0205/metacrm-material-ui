@@ -26,41 +26,41 @@ export const themeSettings = mode => {
     },
     palette: {
       mode: mode,
-      ...(mode === 'dark'
+      ...(mode === 'light'
         ? {
-            // palette values for dark mode
-            primary: {
-              main: colors.blue[500],
-            },
-            secondary: {
-              main: colors.pink[700],
-            },
-            neutral: {
-              main: colors.white[500],
-            },
-            info: {
-              main: colors.green[800],
-            },
-            background: {
-              default: colors.black[400],
-            },
-          }
-        : {
             // palette values for light mode
             primary: {
               main: colors.blue[500],
             },
             secondary: {
-              main: colors.pink[700],
+              main: colors.green[500],
             },
             neutral: {
-              main: colors.white[500],
+              main: colors.white,
             },
             info: {
-              main: colors.green[800],
+              main: colors.yellow[500],
             },
             background: {
-              default: colors.black[400],
+              default: colors.white,
+            },
+          }
+        : {
+            // palette values for dark mode
+            primary: {
+              main: colors.blue[500],
+            },
+            secondary: {
+              main: colors.green[500],
+            },
+            neutral: {
+              main: colors.white,
+            },
+            info: {
+              main: colors.yellow[500],
+            },
+            background: {
+              default: colors.black,
             },
           }),
     },
@@ -99,7 +99,7 @@ export const themeSettings = mode => {
       alert: {
         fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
         fontSize: 16,
-        color: colors.redAccent[600],
+        color: colors.pink[600],
       },
     },
     customColors: {

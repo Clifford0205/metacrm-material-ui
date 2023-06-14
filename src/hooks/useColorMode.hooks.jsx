@@ -7,6 +7,7 @@ const useColorMode = () => {
 
   const colorModeHooksValue = useMemo(
     () => ({
+      mode: mode,
       toggleColorMode: newMode => {
         if (newMode) {
           setMode(newMode);
@@ -15,7 +16,7 @@ const useColorMode = () => {
         }
       },
     }),
-    []
+    [mode]
   );
 
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);

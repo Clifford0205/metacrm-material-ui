@@ -1,105 +1,180 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
+import { useContext } from 'react';
+import { styled } from '@mui/material/styles';
 
 import makeStyles from '@mui/styles/makeStyles';
+import ColorModeContext from '@/contexts/ColorMode.context';
+import isStyledPropsValid from '@/utils/isStyledPropsValid';
+import { tokens } from '@/theme/basicColors';
+import { ToastContainer, toast } from 'react-toastify';
 
-import { colorGuide } from '@/constants/basicColor';
+const StyledSection = styled('div', {
+  shouldForwardProp: isStyledPropsValid,
+})({
+  borderBottom: '1px solid #e9e9e9',
+});
 
-const useStyle = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  section: {
-    display: 'flex',
-    flexDirection: 'column',
-    borderBottom: '1px solid #e9e9e9',
-  },
-  titleText: {
-    display: 'inline-block',
-    fontFamily: 'sans-serif',
-    marginBottom: 0,
-  },
-  sectionTitleText: {
-    display: 'inline-block',
-    fontFamily: 'sans-serif',
-  },
-  hintText: {
-    display: 'inline-block',
-    fontFamily: 'sans-serif',
-  },
-  colorSection: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  paletteBlock: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '10%',
-    alignItems: 'center',
-    margin: '0 1rem 1rem 0',
-  },
-  palette: {
+const StyledColorArea = styled('div', {
+  shouldForwardProp: isStyledPropsValid,
+})({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '10%',
+  alignItems: 'center',
+  margin: '0 1rem 1rem 0',
+
+  '&:hover': {
     cursor: 'pointer',
-    display: 'inline-block',
-    width: '5rem',
-    height: '5rem',
-    borderRadius: '0.25rem',
-    boxShadow: '0 8px 16px 0 rgb(0 0 0 / 10%)',
-    marginBottom: '0.25rem',
+  },
 
-    '&:hover': {
-      boxShadow: '0 8px 16px 0 rgb(0 0 0 / 20%)',
-    },
+  '& .colorKey': {
+    fontWeight: 'Bold',
   },
-  colorKey: {
-    color: '#212121',
-    fontSize: '0.875rem',
-    fontWeight: 'bold',
-    fontFamily: 'sans-serif',
-  },
-  colorCode: {
-    color: '#666666',
-    fontSize: '0.75rem',
-    fontFamily: 'sans-serif',
+
+  '& .colorCode': {
+    fontSize: '12px',
   },
 });
 
+const StyledColorBox = styled('div', {
+  shouldForwardProp: isStyledPropsValid,
+})(({ backgroundColor }) => ({
+  backgroundColor: backgroundColor,
+  width: '100px',
+  height: '100px',
+  borderRadius: '4px',
+  marginBottom: '5px',
+  boxShadow: '0 8px 16px 0 rgb(0 0 0 / 10%)',
+
+  '&:hover': {
+    boxShadow: '0 8px 16px 0 rgb(0 0 0 / 40%)',
+  },
+}));
+
+const StyledExampleContainer = styled('div', {
+  shouldForwardProp: isStyledPropsValid,
+})({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const oneLevelColorList = ['black', 'white'];
+
 const ColorsTemplate = () => {
-  const classes = useStyle();
+  const { mode } = useContext(ColorModeContext);
+  const colorGuide = tokens(mode);
 
   const handleCopied = (text, result) => {
     if (result) {
+      toast.info(`Copied ${text}`);
     }
   };
 
-  return (
-    <div className={classes.root}>
-      <h2 className={classes.titleText}>Colors</h2>
-      <p className={classes.hintText}>Click palette to copy the color code.</p>
+  let list = ['black'];
 
-      {Object.entries(colorGuide).map(([type, lists]) => {
-        const renderColorSection = Object.entries(lists).map(([key, value]) => (
-          <CopyToClipboard key={key} text={key} onCopy={handleCopied}>
-            <div className={classes.paletteBlock}>
-              <div
-                className={classes.palette}
-                style={{ backgroundColor: value }}
-              />
-              <div className={classes.colorKey}>{key}</div>
-              <div className={classes.colorCode}>{value}</div>
-            </div>
-          </CopyToClipboard>
-        ));
-
+  // keyName 是為了讓顏色前面有名字
+  const renderObject = targetObj => {
+    return Object.entries(targetObj).map(([key, value]) => {
+      if (typeof value === 'object') {
         return (
-          <div className={classes.section}>
-            <h2 className={classes.sectionTitleText}>{type}</h2>
-            <div className={classes.colorSection}>{renderColorSection}</div>
-          </div>
+          <StyledSection key={key}>
+            <h2>{key}</h2>
+            <Box
+              display={
+                typeof Object.values(value)[0] === 'object' ? 'block' : 'flex'
+              }
+            >
+              {renderObject(value)}
+            </Box>
+          </StyledSection>
         );
-      })}
+      } else {
+        if (oneLevelColorList.includes(key)) {
+          return (
+            <StyledSection>
+              <h2>{key}</h2>
+              <CopyToClipboard key={key} text={value} onCopy={handleCopied}>
+                <StyledColorArea>
+                  <StyledColorBox backgroundColor={value} />
+                  <div className="colorCode">{value}</div>
+                </StyledColorArea>
+              </CopyToClipboard>
+            </StyledSection>
+          );
+        } else {
+          return (
+            <CopyToClipboard key={key} text={value} onCopy={handleCopied}>
+              <StyledColorArea>
+                <StyledColorBox backgroundColor={value} />
+                <div className="colorKey">{key}</div>
+                <div className="colorCode">{value}</div>
+              </StyledColorArea>
+            </CopyToClipboard>
+          );
+        }
+      }
+    });
+  };
+
+  return (
+    <div>
+      <h2>Colors</h2>
+      <p>Click palette to copy the color code.</p>
+      {renderObject(colorGuide)}
+      <StyledExampleContainer>
+        <h2>使用範例</h2>
+
+        <Box
+          width="500px"
+          p={5}
+          mb={3}
+          bgcolor={theme => theme.customColors.pink[500]}
+          color={theme => theme.customColors.white}
+        >
+          bgcolor={`{theme => theme.customColors.pink[500]}`}
+          <br />
+          color={`{theme => theme.customColors.white}`}
+          <br />
+          建議寫法
+        </Box>
+
+        <Box
+          width="500px"
+          p={5}
+          mb={3}
+          bgcolor={theme => theme.palette.primary.main}
+          color={theme => theme.palette.neutral.main}
+        >
+          bgcolor={`{theme => theme.palette.primary.main}`}
+          <br />
+          color={`{theme => theme.palette.neutral.main}`}
+        </Box>
+
+        <Box
+          width="500px"
+          p={5}
+          mb={3}
+          sx={{ bgcolor: 'secondary.main', color: 'neutral.main' }}
+        >
+          sx={`{bgcolor: 'secondary.main, color: 'neutral.main''}`}
+        </Box>
+      </StyledExampleContainer>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
