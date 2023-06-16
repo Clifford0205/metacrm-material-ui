@@ -162,6 +162,9 @@ const ColorsTemplate = () => {
         >
           sx={`{bgcolor: 'secondary.main, color: 'neutral.main''}`}
         </Box>
+        <Box>
+          <Button>test</Button>
+        </Box>
       </StyledExampleContainer>
 
       <ToastContainer
