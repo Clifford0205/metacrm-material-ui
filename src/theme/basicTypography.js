@@ -7,7 +7,7 @@ export const fontWeight = {
 
 export const typography = () => ({
   fontFamily: '"Roboto", Helvetica, Arial,sans-serif',
-  fontSize: 16,
+  fontSize: 12,
   h1: {
     fontWeight: fontWeight.BOLD,
     fontSize: 40,
