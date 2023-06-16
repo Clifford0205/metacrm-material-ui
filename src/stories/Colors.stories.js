@@ -74,8 +74,6 @@ const ColorsTemplate = () => {
     }
   };
 
-  let list = ['black'];
-
   // keyName 是為了讓顏色前面有名字
   const renderObject = targetObj => {
     return Object.entries(targetObj).map(([key, value]) => {
@@ -162,8 +160,11 @@ const ColorsTemplate = () => {
         >
           sx={`{bgcolor: 'secondary.main, color: 'neutral.main''}`}
         </Box>
+
         <Box>
-          <Button>test</Button>
+          <Button variant="contained" color="primary">
+            test
+          </Button>
         </Box>
       </StyledExampleContainer>
 

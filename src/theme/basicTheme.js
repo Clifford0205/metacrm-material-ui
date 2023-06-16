@@ -1,4 +1,5 @@
 import { tokens } from './basicColors';
+import { typography } from './basicTypography';
 
 export const getColorMap = colors => {
   let colorMap = {};
@@ -13,7 +14,6 @@ export const getColorMap = colors => {
 export const themeSettings = mode => {
   const originalColors = tokens(mode);
   const colors = getColorMap(originalColors);
-  console.log('colors: ', colors);
   return {
     breakpoints: {
       values: {
@@ -33,13 +33,24 @@ export const themeSettings = mode => {
               main: colors.blue[500],
             },
             secondary: {
-              main: colors.green[500],
+              main: colors.purple[500],
+            },
+            error: {
+              main: colors.pink[600],
             },
             neutral: {
               main: colors.white,
             },
             info: {
-              main: colors.yellow[500],
+              main: colors.black,
+            },
+            success: {
+              main: colors.black,
+            },
+            text: {
+              primary: colors.grey[800],
+              secondary: colors.grey[700],
+              disabled: colors.grey[500],
             },
             background: {
               default: colors.white,
@@ -51,57 +62,31 @@ export const themeSettings = mode => {
               main: colors.blue[500],
             },
             secondary: {
-              main: colors.green[500],
+              main: colors.purple[500],
+            },
+            error: {
+              main: colors.pink[600],
             },
             neutral: {
               main: colors.white,
             },
             info: {
-              main: colors.yellow[500],
+              main: colors.black,
+            },
+            success: {
+              main: colors.black,
+            },
+            text: {
+              primary: colors.grey[800],
+              secondary: colors.grey[700],
+              disabled: colors.grey[500],
             },
             background: {
               default: colors.black,
             },
           }),
     },
-    typography: {
-      fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-      fontSize: 12,
-      h1: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 40,
-      },
-      h2: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 32,
-      },
-      h3: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 24,
-      },
-      h4: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 20,
-      },
-      h5: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 16,
-      },
-      h6: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 14,
-      },
-      cardTitle: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 20,
-        fontWeight: 'Bold',
-      },
-      alert: {
-        fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-        fontSize: 16,
-        color: colors.pink[600],
-      },
-    },
+    typography: typography(),
     customColors: {
       ...colors,
     },
