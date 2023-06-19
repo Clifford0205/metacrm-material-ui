@@ -55,9 +55,9 @@ const allComponentsEntry = [
   {
     input: inputArray,
     output: {
-      dir: 'dist/m800',
+      dir: 'dist/metacrm-material-ui',
       format: 'esm',
-      name: 'M800',
+      name: 'metacrm-material-ui',
       globals,
       exports: 'named',
       sourcemap: false,
@@ -67,69 +67,32 @@ const allComponentsEntry = [
   },
 ];
 
-const task = {
-  input: 'src/components/SvgIcon/index.js',
-  output: {
-    dir: 'dist',
-    format: 'esm',
-    name: 'metacrm-svg',
-    exports: 'named',
-    sourcemap: true,
-    preserveModules: true,
-    preserveModulesRoot: 'src/components',
-  },
-
-  external: makeExternalPredicate([
-    ...Object.keys(packageJson.dependencies || {}),
-    ...Object.keys(packageJson.peerDependencies || {}),
-  ]),
-
-  plugins: [
-    peerDepsExternal(),
-    resolve({
-      extensions: ['.mjs', '.js', '.jsx', '.json', '.node', '.ts', '.tsx'],
-      preferBuiltins: true,
-      mainFields: ['browser'],
-    }),
-    babel({
-      exclude: 'node_modules/**', // only transpile our source code
-      babelHelpers: 'bundled',
-      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts', '.tsx'],
-    }),
-    commonjs(),
-    copy({
-      targets: [{ src: 'assets/fonts', dest: 'dist/public' }],
-    }),
-    alias({
-      entries: [{ find: '@', replacement: pathResolve('src') }],
-    }),
-    replace({
-      preventAssignment: true,
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
-  ],
-};
-
 const copyMaterialFiles = {
   targets: [
     {
       src: './src/utils/*',
-      dest: 'dist/m800/utils/',
+      dest: 'dist/metacrm-material-ui/utils/',
     },
     {
       src: './src/constants/*',
-      dest: 'dist/m800/constants/',
+      dest: 'dist/metacrm-material-ui/constants/',
     },
     {
       src: './src/theme/*',
-      dest: 'dist/m800/theme/',
+      dest: 'dist/metacrm-material-ui/theme/',
+    },
+    {
+      src: './src/hooks/*',
+      dest: 'dist/metacrm-material-ui/hooks/',
+    },
+    {
+      src: './src/contexts/*',
+      dest: 'dist/metacrm-material-ui/contexts/',
     },
   ],
   hook: 'writeBundle',
   copyOnce: true,
 };
-
-console.log('allComponentsEntry: ', allComponentsEntry);
 
 const tasks = allComponentsEntry.map((enchEntry, index) => {
   const copyFiles = index === 0 ? copyMaterialFiles : {};

@@ -1,11 +1,14 @@
 {
-  "name": "@metacrm/metacrm-material-ui",
+  "name": "metacrm-material-ui",
   "description": "Storybook for MetaCRM Material UI",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaCRM-Inc/metacrm-svg.git"
   },
+  "files": [
+    "dist"
+  ],
   "version": "0.1.0",
   "dependencies": {
     "@babel/eslint-parser": "^7.21.8",
@@ -45,6 +48,7 @@
     "start": "react-scripts start",
     "build-storybook": "storybook build",
     "build": "yarn clean && NODE_ENV=production rollup -c --bundleConfigAsCjs",
+    "watch": "rollup -w -c --bundleConfigAsCjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
