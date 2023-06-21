@@ -2,6 +2,7 @@ module.exports = {
 	env: {
 		browser: true,
 		es2021: true,
+		commonjs: true,
 	},
 	extends: [
 		'eslint:recommended',
@@ -9,24 +10,36 @@ module.exports = {
 		'plugin:prettier/recommended',
 		'airbnb',
 		'prettier',
+		'plugin:import/recommended',
 	],
-	overrides: [
-		{
-			env: {
-				node: true,
-			},
-			files: ['.eslintrc.{js,cjs}'],
-			parserOptions: {
-				sourceType: 'script',
-			},
-		},
-	],
+	overrides: [],
 	parserOptions: {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: ['react', 'prettier'],
+	plugins: ['react', 'eslint-plugin-import', 'prettier'],
 	rules: {
 		'prettier/prettier': 'warn',
+		'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+		'react/jsx-props-no-spreading': 'off',
+		'react/destructuring-assignment': 'off',
+		'no-unused-vars': 'warn',
+		'import/no-extraneous-dependencies': [
+			'error',
+			{
+				devDependencies: true,
+			},
+		],
+	},
+	settings: {
+		'import/resolver': {
+			'eslint-import-resolver-custom-alias': {
+				alias: {
+					'@': './src',
+					'@tests': './tests',
+				},
+				extensions: ['.ts', '.js', '.jsx', '.json'],
+			},
+		},
 	},
 };

@@ -1,5 +1,5 @@
 const blackListProps = {
-  backgroundColor: true,
+	backgroundColor: true,
 };
 
 export default blackListProps;

@@ -3,19 +3,21 @@ import { action } from '@storybook/addon-actions';
 import Button from '@/components/Button';
 
 export default {
-  title: 'Example/Button',
-  component: Button,
+	title: 'Example/Button',
+	component: Button,
 };
 
-const Template = args => <Button {...args}>{args.children}</Button>;
+function Template(args) {
+	return <Button {...args}>{args.children}</Button>;
+}
 
 export const solidButton = Template.bind({});
 
 solidButton.args = {
-  children: 'Solid',
-  variant: 'contained',
-  color: 'primary',
-  disableElevation: true,
-  disableRipple: true,
-  onClick: action('Button Clicked'),
+	children: 'Solid',
+	variant: 'contained',
+	color: 'primary',
+	disableElevation: true,
+	disableRipple: true,
+	onClick: action('Button Clicked'),
 };

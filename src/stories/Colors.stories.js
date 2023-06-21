@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Button from '@/components/Button';
 
-import { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 
 import ColorModeContext from '@/contexts/ColorMode.context';
@@ -42,7 +41,7 @@ const StyledColorArea = styled('div', {
 const StyledColorBox = styled('div', {
 	shouldForwardProp: isStyledPropsValid,
 })(({ theme, backgroundColor }) => ({
-	backgroundColor: backgroundColor,
+	backgroundColor,
 	width: '100px',
 	height: '100px',
 	borderRadius: '4px',
@@ -63,7 +62,7 @@ const StyledExampleContainer = styled('div', {
 
 const oneLevelColorList = ['black', 'white'];
 
-const ColorsTemplate = () => {
+function ColorsTemplate() {
 	const { mode } = useContext(ColorModeContext);
 	const colorGuide = tokens(mode);
 
@@ -74,8 +73,8 @@ const ColorsTemplate = () => {
 	};
 
 	// keyName 是為了讓顏色前面有名字
-	const renderObject = (targetObj) => {
-		return Object.entries(targetObj).map(([key, value]) => {
+	const renderObject = (targetObj) =>
+		Object.entries(targetObj).map(([key, value]) => {
 			if (typeof value === 'object') {
 				return (
 					<StyledSection key={key}>
@@ -85,33 +84,30 @@ const ColorsTemplate = () => {
 						</Box>
 					</StyledSection>
 				);
-			} else {
-				if (oneLevelColorList.includes(key)) {
-					return (
-						<StyledSection key={key}>
-							<h2>{key}</h2>
-							<CopyToClipboard text={value} onCopy={handleCopied}>
-								<StyledColorArea>
-									<StyledColorBox backgroundColor={value} />
-									<div className='colorCode'>{value}</div>
-								</StyledColorArea>
-							</CopyToClipboard>
-						</StyledSection>
-					);
-				} else {
-					return (
-						<CopyToClipboard key={key} text={value} onCopy={handleCopied}>
+			}
+			if (oneLevelColorList.includes(key)) {
+				return (
+					<StyledSection key={key}>
+						<h2>{key}</h2>
+						<CopyToClipboard text={value} onCopy={handleCopied}>
 							<StyledColorArea>
 								<StyledColorBox backgroundColor={value} />
-								<div className='colorKey'>{key}</div>
 								<div className='colorCode'>{value}</div>
 							</StyledColorArea>
 						</CopyToClipboard>
-					);
-				}
+					</StyledSection>
+				);
 			}
+			return (
+				<CopyToClipboard key={key} text={value} onCopy={handleCopied}>
+					<StyledColorArea>
+						<StyledColorBox backgroundColor={value} />
+						<div className='colorKey'>{key}</div>
+						<div className='colorCode'>{value}</div>
+					</StyledColorArea>
+				</CopyToClipboard>
+			);
 		});
-	};
 
 	return (
 		<div>
@@ -171,7 +167,7 @@ const ColorsTemplate = () => {
 			/>
 		</div>
 	);
-};
+}
 
 export const colors = ColorsTemplate.bind({});
 
