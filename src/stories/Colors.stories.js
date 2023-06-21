@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Box from '@mui/material/Box';
 import Button from '@/components/Button';
+import { upperCase } from 'lodash-es';
 
 import { styled } from '@mui/material/styles';
 
@@ -38,6 +39,13 @@ const StyledColorArea = styled('div', {
 	},
 });
 
+const StyledColorCode = styled('div', {
+	shouldForwardProp: isStyledPropsValid,
+})(({ theme, isExist }) => ({
+	fontSize: '12px',
+	...(isExist && { color: theme.customColors.yellow[600] }),
+}));
+
 const StyledColorBox = styled('div', {
 	shouldForwardProp: isStyledPropsValid,
 })(({ theme, backgroundColor }) => ({
@@ -62,6 +70,39 @@ const StyledExampleContainer = styled('div', {
 
 const oneLevelColorList = ['black', 'white'];
 
+const designColors = [
+	'#0096FF',
+	'#7B61FF',
+	'#FF3296',
+	'#FFC814',
+	'#14C864',
+	'#000000',
+	'#141314',
+	'#ffffff',
+	'#383538',
+	'#555',
+	'#777',
+	'#A5A5A5',
+	'#D6D6D6',
+	'#E6E6E6',
+	'#F8F8F8',
+	'#FAA7E0',
+	'#F3E87F',
+	'#EBD9B7',
+	'#A4BCFD',
+	'#D4E4FA',
+	'#D6BBFB',
+	'#CBE6FF',
+	'#0086E4',
+	'#FFDED7',
+	'#FC5555',
+	'#5643CC',
+	'#4655D3',
+	'#222222',
+	'#29CC6A',
+	'#0099FF',
+];
+
 function ColorsTemplate() {
 	const { mode } = useContext(ColorModeContext);
 	const colorGuide = tokens(mode);
@@ -71,6 +112,8 @@ function ColorsTemplate() {
 			toast.info(`Copied ${text}`);
 		}
 	};
+
+	const handleExist = (color) => designColors.find((item) => upperCase(item) === upperCase(color));
 
 	// keyName 是為了讓顏色前面有名字
 	const renderObject = (targetObj) =>
@@ -92,7 +135,9 @@ function ColorsTemplate() {
 						<CopyToClipboard text={value} onCopy={handleCopied}>
 							<StyledColorArea>
 								<StyledColorBox backgroundColor={value} />
-								<div className='colorCode'>{value}</div>
+								<StyledColorCode className='colorCode' isExist={handleExist(value)}>
+									{value}
+								</StyledColorCode>
 							</StyledColorArea>
 						</CopyToClipboard>
 					</StyledSection>
@@ -103,7 +148,7 @@ function ColorsTemplate() {
 					<StyledColorArea>
 						<StyledColorBox backgroundColor={value} />
 						<div className='colorKey'>{key}</div>
-						<div className='colorCode'>{value}</div>
+						<StyledColorCode isExist={handleExist(value)}>{value}</StyledColorCode>
 					</StyledColorArea>
 				</CopyToClipboard>
 			);
