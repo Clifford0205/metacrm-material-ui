@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 
-import makeStyles from '@mui/styles/makeStyles';
 import ColorModeContext from '@/contexts/ColorMode.context';
 import isStyledPropsValid from '@/utils/isStyledPropsValid';
 import { tokens } from '@/theme/basicColors';
@@ -42,7 +41,7 @@ const StyledColorArea = styled('div', {
 
 const StyledColorBox = styled('div', {
   shouldForwardProp: isStyledPropsValid,
-})(({ backgroundColor }) => ({
+})(({ theme, backgroundColor }) => ({
   backgroundColor: backgroundColor,
   width: '100px',
   height: '100px',
@@ -93,9 +92,9 @@ const ColorsTemplate = () => {
       } else {
         if (oneLevelColorList.includes(key)) {
           return (
-            <StyledSection>
+            <StyledSection key={key}>
               <h2>{key}</h2>
-              <CopyToClipboard key={key} text={value} onCopy={handleCopied}>
+              <CopyToClipboard text={value} onCopy={handleCopied}>
                 <StyledColorArea>
                   <StyledColorBox backgroundColor={value} />
                   <div className="colorCode">{value}</div>

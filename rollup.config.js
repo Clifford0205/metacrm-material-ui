@@ -55,7 +55,7 @@ const allComponentsEntry = [
   {
     input: inputArray,
     output: {
-      dir: 'dist/metacrm-material-ui',
+      dir: 'dist',
       format: 'esm',
       name: 'metacrm-material-ui',
       globals,
@@ -71,23 +71,23 @@ const copyMaterialFiles = {
   targets: [
     {
       src: './src/utils/*',
-      dest: 'dist/metacrm-material-ui/utils/',
+      dest: 'dist/utils/',
     },
     {
       src: './src/constants/*',
-      dest: 'dist/metacrm-material-ui/constants/',
+      dest: 'dist/constants/',
     },
     {
       src: './src/theme/*',
-      dest: 'dist/metacrm-material-ui/theme/',
+      dest: 'dist/theme/',
     },
     {
       src: './src/hooks/*',
-      dest: 'dist/metacrm-material-ui/hooks/',
+      dest: 'dist/hooks/',
     },
     {
       src: './src/contexts/*',
-      dest: 'dist/metacrm-material-ui/contexts/',
+      dest: 'dist/contexts/',
     },
   ],
   hook: 'writeBundle',
