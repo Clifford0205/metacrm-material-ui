@@ -17,7 +17,7 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: ['react', 'eslint-plugin-import', 'prettier'],
+	plugins: ['react', 'eslint-plugin-import', 'import', 'prettier'],
 	rules: {
 		'prettier/prettier': 'warn',
 		'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
@@ -28,6 +28,25 @@ module.exports = {
 			'error',
 			{
 				devDependencies: true,
+			},
+		],
+		'import/order': [
+			'error',
+			{
+				alphabetize: {
+					order: 'asc',
+					caseInsensitive: true,
+				},
+				'newlines-between': 'always',
+				groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+				pathGroups: [
+					{
+						pattern: 'react',
+						group: 'external',
+						position: 'before',
+					},
+				],
+				pathGroupsExcludedImportTypes: ['builtin'],
 			},
 		],
 	},

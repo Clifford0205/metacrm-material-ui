@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import MuiButton from '@mui/material/Button';
 import { isEmpty } from 'lodash-es';
+import PropTypes from 'prop-types';
 
 function Button({ children, classes, ...otherProps }) {
 	return (

@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 import Box from '@mui/material/Box';
-import Button from '@/components/Button';
-import { upperCase } from 'lodash-es';
-
 import { styled } from '@mui/material/styles';
-
-import ColorModeContext from '@/contexts/ColorMode.context';
-import isStyledPropsValid from '@/utils/isStyledPropsValid';
-import { tokens } from '@/theme/basicColors';
+import { upperCase } from 'lodash-es';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
+
+import Button from '@/components/Button';
+import ColorModeContext from '@/contexts/ColorMode.context';
+import { tokens } from '@/theme/basicColors';
+import isStyledPropsValid from '@/utils/isStyledPropsValid';
 
 const StyledSection = styled('div', {
 	shouldForwardProp: isStyledPropsValid,
