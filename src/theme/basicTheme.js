@@ -1,5 +1,5 @@
 import { tokens } from './basicColors';
-import { typography } from './basicTypography';
+import { typography, fontWeight } from './basicTypography';
 
 export const getColorMap = (colors) => {
 	let colorMap = {};
@@ -87,6 +87,7 @@ export const themeSettings = (mode) => {
 				  }),
 		},
 		typography: typography(),
+		fontWeight,
 		customColors: {
 			...colors,
 		},
